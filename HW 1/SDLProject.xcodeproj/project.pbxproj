@@ -7,15 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		842DC6772CA644DF0052A9C3 /* shield.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 842DC6762CA644D20052A9C3 /* shield.png */; };
 		842DC67A2CA645EF0052A9C3 /* starter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842DC6782CA645EF0052A9C3 /* starter.cpp */; };
-		84651B172C17EB5100817E28 /* kano.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84651B162C17EAFE00817E28 /* kano.png */; };
 		84651B1A2C17ED4900817E28 /* completed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84651B192C17ED4900817E28 /* completed.cpp */; };
 		BB5D6A582CA7517A000A5F3C /* dori.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB5D6A4D2CA75161000A5F3C /* dori.png */; };
-		BB5D6A592CA7517A000A5F3C /* goldfish bubbles.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB5D6A4E2CA75161000A5F3C /* goldfish bubbles.png */; };
 		BB5D6A5A2CA7517A000A5F3C /* nemo.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB5D6A4F2CA75161000A5F3C /* nemo.png */; };
-		BB5D6A5B2CA7517A000A5F3C /* red blue coral.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB5D6A502CA75161000A5F3C /* red blue coral.png */; };
-		BB5D6A5C2CA7517A000A5F3C /* red coral.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB5D6A512CA75161000A5F3C /* red coral.png */; };
 		BB5D6A5D2CA7517A000A5F3C /* seaweed.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB5D6A522CA75161000A5F3C /* seaweed.png */; };
 		BB5D6A5E2CA7517A000A5F3C /* shark.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB5D6A532CA75161000A5F3C /* shark.png */; };
 		BB5D6A5F2CA7517A000A5F3C /* water.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB5D6A542CA75161000A5F3C /* water.png */; };
@@ -38,32 +33,22 @@
 			dstSubfolderSpec = 6;
 			files = (
 				BB5D6A582CA7517A000A5F3C /* dori.png in CopyFiles */,
-				BB5D6A592CA7517A000A5F3C /* goldfish bubbles.png in CopyFiles */,
 				BB5D6A5A2CA7517A000A5F3C /* nemo.png in CopyFiles */,
-				BB5D6A5B2CA7517A000A5F3C /* red blue coral.png in CopyFiles */,
-				BB5D6A5C2CA7517A000A5F3C /* red coral.png in CopyFiles */,
 				BB5D6A5D2CA7517A000A5F3C /* seaweed.png in CopyFiles */,
 				BB5D6A5E2CA7517A000A5F3C /* shark.png in CopyFiles */,
 				BB5D6A5F2CA7517A000A5F3C /* water.png in CopyFiles */,
 				BB5D6A602CA7517A000A5F3C /* yellow.png in CopyFiles */,
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
-				842DC6772CA644DF0052A9C3 /* shield.png in CopyFiles */,
-				84651B172C17EB5100817E28 /* kano.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		842DC6762CA644D20052A9C3 /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
 		842DC6782CA645EF0052A9C3 /* starter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = starter.cpp; sourceTree = "<group>"; };
-		84651B162C17EAFE00817E28 /* kano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kano.png; sourceTree = "<group>"; };
 		84651B192C17ED4900817E28 /* completed.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = completed.cpp; sourceTree = "<group>"; };
 		BB5D6A4D2CA75161000A5F3C /* dori.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dori.png; sourceTree = "<group>"; };
-		BB5D6A4E2CA75161000A5F3C /* goldfish bubbles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goldfish bubbles.png"; sourceTree = "<group>"; };
 		BB5D6A4F2CA75161000A5F3C /* nemo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nemo.png; sourceTree = "<group>"; };
-		BB5D6A502CA75161000A5F3C /* red blue coral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red blue coral.png"; sourceTree = "<group>"; };
-		BB5D6A512CA75161000A5F3C /* red coral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red coral.png"; sourceTree = "<group>"; };
 		BB5D6A522CA75161000A5F3C /* seaweed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seaweed.png; sourceTree = "<group>"; };
 		BB5D6A532CA75161000A5F3C /* shark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shark.png; sourceTree = "<group>"; };
 		BB5D6A542CA75161000A5F3C /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
@@ -127,9 +112,7 @@
 		DBDF1B512323DE3F007CECB1 /* SDLProject */ = {
 			isa = PBXGroup;
 			children = (
-				842DC6762CA644D20052A9C3 /* shield.png */,
 				84651B182C17ED2400817E28 /* files */,
-				84651B162C17EAFE00817E28 /* kano.png */,
 				DBDF1B5B2323DE8D007CECB1 /* glm */,
 				DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */,
 				DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */,
@@ -137,10 +120,7 @@
 				DBDF1B5A2323DE8D007CECB1 /* stb_image.h */,
 				DBDF1B522323DE3F007CECB1 /* main.cpp */,
 				BB5D6A4D2CA75161000A5F3C /* dori.png */,
-				BB5D6A4E2CA75161000A5F3C /* goldfish bubbles.png */,
 				BB5D6A4F2CA75161000A5F3C /* nemo.png */,
-				BB5D6A502CA75161000A5F3C /* red blue coral.png */,
-				BB5D6A512CA75161000A5F3C /* red coral.png */,
 				BB5D6A522CA75161000A5F3C /* seaweed.png */,
 				BB5D6A532CA75161000A5F3C /* shark.png */,
 				BB5D6A542CA75161000A5F3C /* water.png */,
