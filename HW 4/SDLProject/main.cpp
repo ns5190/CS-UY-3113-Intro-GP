@@ -70,7 +70,8 @@ const int   VIEWPORT_X = 0,
             VIEWPORT_WIDTH = WINDOW_WIDTH,
             VIEWPORT_HEIGHT = WINDOW_HEIGHT;
 
-const char GAME_WINDOW_NAME[] = "Ghost Hunter";
+
+const char GAME_WINDOW_NAME[] = "Ghost Hunters";
 
 const char  V_SHADER_PATH[] = "shaders/vertex_textured.glsl",
             F_SHADER_PATH[] = "shaders/fragment_textured.glsl";
