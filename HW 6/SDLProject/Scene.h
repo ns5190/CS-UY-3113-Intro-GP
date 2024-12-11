@@ -39,7 +39,7 @@ struct GameState
 
 class Scene {
 public:
-    float timer = 5.0f; // seconds
+    float timer = 45.0f; // seconds
     bool end_scene = false;
     float end_scene_timer = 0;
     bool end_scene_ping[5] = { false, false, false, false, false };
