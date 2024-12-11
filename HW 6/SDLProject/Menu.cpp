@@ -6,9 +6,6 @@
 
 unsigned int MENU_DATA[] = { 0 };
 
-bool start_blink = true;
-float blink_timer = 0;
-const float blink_switch = 0.5;
 
 
 GLuint m_font_texture_id;
@@ -57,11 +54,7 @@ void Menu::initialise()
 
 void Menu::update(float delta_time)
 {
-    blink_timer += delta_time;
-    if (blink_timer > blink_switch) {
-        start_blink = not start_blink;
-        blink_timer = 0;
-    }
+
 }
 
 void Menu::render(ShaderProgram *program)
@@ -73,9 +66,6 @@ void Menu::render(ShaderProgram *program)
     Utility::draw_text(program, m_font_texture_id, std::string(" dramatic visualization of "), 0.8f, -0.4f, glm::vec3(-5.6f, -1.0f, 0.0f));
     Utility::draw_text(program, m_font_texture_id, std::string("your new life as a farmhand ... "), 0.8f, -0.4f, glm::vec3(-5.6f, -2.0f, 0.0f));
     
-    if (start_blink) {
-        Utility::draw_text(program, m_font_texture_id, std::string("Press [Enter] to Start Building a Puppy Army"),
-                           0.8f, -0.4f, glm::vec3(-8.5f, -5.0f, 0.0f));
-    }
+    Utility::draw_text(program, m_font_texture_id, std::string("Press [Enter] to Start Building a Puppy Army"), 0.8f, -0.4f, glm::vec3(-8.5f, -5.0f, 0.0f));
 
 }

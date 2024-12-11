@@ -6,10 +6,6 @@
 
 GLuint m_font_B;
 
-bool start_blink_B = true;
-float blink_timer_B = 0;
-const float blink_switch_B = 0.5;
-
 int egg_index = 0;
 
 unsigned int LEVEL_B_BACKGROUND_1_DATA[] =
@@ -198,11 +194,6 @@ void LevelB::initialise()
 
 void LevelB::update(float delta_time)
 {
-    blink_timer_B += delta_time;
-    if (blink_timer_B > blink_switch_B) {
-        start_blink_B = not start_blink_B;
-        blink_timer_B = 0;
-    }
     
     if (timer < 0) {
         end_scene = true;
@@ -294,10 +285,9 @@ void LevelB::render(ShaderProgram *program)
                 Mix_PlayChannel(-1, m_game_state.complete_sfx, 0);
                 end_scene_ping[4] = true;
             }
-            if (start_blink_B) {
-                Utility::draw_text(program, m_font_B, std::string("Press [Enter] to ..."), 1.2f, -0.6f, glm::vec3(-7.5f, -2.5f, 0.0f));
-                Utility::draw_text(program, m_font_B, std::string("Continue Manual Labor"), 1.2f, -0.6f, glm::vec3(-5.0f, -3.5f, 0.0f));
-            }
+            
+            Utility::draw_text(program, m_font_B, std::string("Press [Enter] to ..."), 1.2f, -0.6f, glm::vec3(-7.5f, -2.5f, 0.0f));
+            Utility::draw_text(program, m_font_B, std::string("Continue Manual Labor"), 1.2f, -0.6f, glm::vec3(-5.0f, -3.5f, 0.0f));
         }
         return;
     }

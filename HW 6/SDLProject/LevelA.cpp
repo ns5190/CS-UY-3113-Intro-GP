@@ -6,9 +6,6 @@
 
 GLuint m_font_A;
 
-bool start_blink_A = true;
-float blink_timer_A = 0;
-const float blink_switch_A = 0.5;
 
 unsigned int LEVEL_A_BACKGROUND_1_DATA[] =
 {
@@ -193,11 +190,6 @@ void LevelA::initialise()
 
 void LevelA::update(float delta_time)
 {
-    blink_timer_A += delta_time;
-    if (blink_timer_A > blink_switch_A) {
-        start_blink_A = not start_blink_A;
-        blink_timer_A = 0;
-    }
     
     if (timer < 0) {
         end_scene = true;
@@ -278,10 +270,8 @@ void LevelA::render(ShaderProgram *program)
                 Mix_PlayChannel(-1, m_game_state.complete_sfx, 0);
                 end_scene_ping[4] = true;
             }
-            if (start_blink_A) {
-                Utility::draw_text(program, m_font_A, std::string("Press [Enter] to ..."), 1.2f, -0.6f, glm::vec3(-7.5f, -2.5f, 0.0f));
-                Utility::draw_text(program, m_font_A, std::string("Gather Food"), 1.2f, -0.6f, glm::vec3(0.5f, -3.5f, 0.0f));
-            }
+            Utility::draw_text(program, m_font_A, std::string("Press [Enter] to ..."), 1.2f, -0.6f, glm::vec3(-7.5f, -2.5f, 0.0f));
+            Utility::draw_text(program, m_font_A, std::string("Gather Food"), 1.2f, -0.6f, glm::vec3(0.5f, -3.5f, 0.0f));
         }
         return;
     }

@@ -6,9 +6,6 @@
 
 GLuint m_font_C;
 
-bool start_blink_C = true;
-float blink_timer_C = 0;
-const float blink_switch_C = 0.5;
 
 int poop_index = 0;
 
@@ -200,12 +197,7 @@ void LevelC::initialise()
 
 void LevelC::update(float delta_time)
 {
-    blink_timer_C += delta_time;
-    if (blink_timer_C > blink_switch_C) {
-        start_blink_C = not start_blink_C;
-        blink_timer_C = 0;
-    }
-    
+
     if (timer < 0) {
         end_scene = true;
         m_game_state.player->update(delta_time, m_game_state.player, m_game_state.animals, ANIMAL_COUNT, m_game_state.map);
@@ -298,10 +290,9 @@ void LevelC::render(ShaderProgram *program)
                 Mix_PlayChannel(-1, m_game_state.complete_sfx, 0);
                 end_scene_ping[4] = true;
             }
-            if (start_blink_C) {
-                Utility::draw_text(program, m_font_C, std::string("Press [Enter] to ..."), 1.2f, -0.6f, glm::vec3(-7.5f, -2.5f, 0.0f));
-                Utility::draw_text(program, m_font_C, std::string("See if You are Still Hired"), 1.2f, -0.6f, glm::vec3(-7.5f, -3.5f, 0.0f));
-            }
+            Utility::draw_text(program, m_font_C, std::string("Press [Enter] to ..."), 1.2f, -0.6f, glm::vec3(-7.5f, -2.5f, 0.0f));
+            Utility::draw_text(program, m_font_C, std::string("See if You are Still Hired"), 1.2f, -0.6f, glm::vec3(-7.5f, -3.5f, 0.0f));
+
         }
         return;
     }

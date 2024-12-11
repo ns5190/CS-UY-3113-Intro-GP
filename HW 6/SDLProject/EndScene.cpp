@@ -88,18 +88,18 @@ void EndScene::render(ShaderProgram *program)
         int score = PUPPY_COUNT * 100 + EGG_COUNT * 50 + POOP_COUNT * 150;
 
         // Render points breakdown
-        Utility::draw_text(program, m_font_end, "Puppy: 100 points each", 1.0f, -0.5f, glm::vec3(-3.0f, 4.0f, 0.0f));
-        Utility::draw_text(program, m_font_end, "Egg: 50 points each", 1.0f, -0.5f, glm::vec3(-3.0f, 3.0f, 0.0f));
-        Utility::draw_text(program, m_font_end, "Poop: 150 points each", 1.0f, -0.5f, glm::vec3(-3.0f, 2.0f, 0.0f));
+        Utility::draw_text(program, m_font_end, "Puppy: 100 points each", 1.0f, -0.5f, glm::vec3(-5.0f, 4.0f, 0.0f));
+        Utility::draw_text(program, m_font_end, "Egg: 50 points each", 1.0f, -0.5f, glm::vec3(-5.0f, 3.0f, 0.0f));
+        Utility::draw_text(program, m_font_end, "Poop: 150 points each", 1.0f, -0.5f, glm::vec3(-5.0f, 2.0f, 0.0f));
 
         // Render the score
         std::stringstream ss;
         ss << "Score: " << score;
-        Utility::draw_text(program, m_font_end, ss.str(), 1.0f, -0.5f, glm::vec3(-3.0f, 1.0f, 0.0f));
+        Utility::draw_text(program, m_font_end, ss.str(), 1.0f, -0.5f, glm::vec3(-5.0f, 1.0f, 0.0f));
 
         // Display win/lose message
         std::string message = (score >= 1000) ? "You are Still Employed..." : "You are Fired!";
-        Utility::draw_text(program, m_font_end, message, 1.0f, -0.5f, glm::vec3(-3.0f, 0.0f, 0.0f));
+        Utility::draw_text(program, m_font_end, message, 1.0f, -0.5f, glm::vec3(-5.0f, 0.0f, 0.0f));
 
         if (!end_scene_ping[0]) {
             Mix_PlayChannel(-1, m_game_state.complete_sfx, 0);
