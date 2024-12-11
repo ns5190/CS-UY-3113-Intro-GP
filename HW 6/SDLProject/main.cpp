@@ -54,6 +54,7 @@ const int VIEWPORT_X = 0,
 const char V_SHADER_PATH[] = "shaders/vertex_textured.glsl",
            F_SHADER_PATH[] = "shaders/fragment_textured.glsl";
 
+
 const float MILLISECONDS_IN_SECOND = 1000.0;
 Effects *g_effects = nullptr;
 Scene    *g_current_scene;
@@ -149,11 +150,6 @@ void process_input()
 
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym) {
-                    case SDLK_q:
-                        // Quit the game with a keystroke
-                        g_game_is_running  = false;
-                        break;
-
                     case SDLK_SPACE:
                         // Collection
                         if (g_current_scene == g_level_a) {

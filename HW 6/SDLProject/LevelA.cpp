@@ -18,12 +18,12 @@ unsigned int LEVEL_A_BACKGROUND_1_DATA[] =
     175, 175, 150, 175, 422, 175, 175, 175, 175, 420, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 423, 175, 175, 175, 175, 175, 175,
     175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 421, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
     175, 175, 175, 175, 175, 175, 175, 152, 175, 175, 175, 175, 175, 175, 175, 175, 175, 152, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
-    175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 200, 201, 201, 201, 203, 175, 175, 175, 175, 325, 326, 326, 326, 327, 175, 175, 423, 175,
-    175, 175, 175, 175, 401, 175, 175, 175, 175, 151, 175, 175, 225, 226, 206, 176, 177, 203, 175, 175, 175, 350, 351, 351, 351, 352, 175, 175, 175, 175,
-    175, 175, 175, 175, 175, 175, 175, 175, 151, 175, 200, 201, 202, 176, 226, 207, 176, 228, 175, 175, 175, 375, 376, 376, 376, 377, 175, 175, 175, 175,
-    175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 225, 226, 231, 227, 206, 226, 226, 228, 175, 175, 175, 175, 175, 175, 175, 175, 175, 401, 175, 175,
-    175, 175, 175, 175, 175, 175, 175, 401, 175, 175, 250, 251, 251, 251, 251, 251, 251, 253, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
-    175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 423, 175, 175, 175, 175, 422, 175, 175, 175, 175, 175, 175, 151, 175, 175,
+    175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 325, 326, 326, 326, 327, 175, 175, 423, 175,
+    175, 175, 175, 175, 401, 175, 175, 175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 350, 351, 351, 351, 352, 175, 175, 175, 175,
+    175, 175, 175, 175, 175, 175, 175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 375, 376, 376, 376, 377, 175, 175, 175, 175,
+    175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 401, 175, 175,
+    175, 175, 175, 175, 175, 175, 175, 401, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
+    175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 422, 175, 175, 175, 175, 175, 175, 151, 175, 175,
     175, 175, 420, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 151, 175, 175, 175, 175, 175, 175, 152, 175, 175, 175,
     175, 423, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 422, 175, 175, 175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
     175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 401, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
@@ -96,7 +96,6 @@ LevelA::~LevelA()
     Mix_FreeMusic(m_game_state.bgm2);
     Mix_FreeChunk(m_game_state.deposit_sfx);
     Mix_FreeChunk(m_game_state.select_sfx);
-    Mix_FreeChunk(m_game_state.ping_sfx);
     Mix_FreeChunk(m_game_state.complete_sfx);
     Mix_FreeChunk(m_game_state.times_up_sfx);
 
@@ -139,10 +138,11 @@ void LevelA::initialise()
     m_game_state.player->m_animation_cols = 3;
     m_game_state.player->m_animation_rows = 4;
     m_game_state.player->set_height(1.0f);
-    m_game_state.player->set_width(1.7f);
+    m_game_state.player->set_width(1.0f);
     m_game_state.player->set_size(glm::vec3(1.5f, 2.5f, 0.0f));
     
     glm::vec3 m_animal_positions[] = {glm::vec3( 7.0f, -15.0f, 0.0f),
+                                      glm::vec3( 15.0f, -13.0f, 0.0f),
                                       glm::vec3(25.0f, -10.0f, 0.0f)};
 
     m_game_state.animals = new Entity[ANIMAL_COUNT];
@@ -181,13 +181,12 @@ void LevelA::initialise()
     
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
     
-    m_game_state.bgm = Mix_LoadMUS("spring.mp3");
+    m_game_state.bgm = Mix_LoadMUS("goth.mp3");
     Mix_PlayMusic(m_game_state.bgm, -1);
     Mix_VolumeMusic(20.0f);
     
     m_game_state.deposit_sfx = Mix_LoadWAV("deposit.wav");
     m_game_state.select_sfx = Mix_LoadWAV("select.wav");
-    m_game_state.ping_sfx = Mix_LoadWAV("ping.wav");
     m_game_state.complete_sfx = Mix_LoadWAV("questcomplete.wav");
     m_game_state.times_up_sfx = Mix_LoadWAV("achievement.wav");
 }
@@ -254,16 +253,14 @@ void LevelA::render(ShaderProgram *program)
         }
         if (end_scene_timer >= 2.0) {
             m_game_state.background->render(program);
-            Utility::draw_text(program, m_font_A, std::string("Items Collected:"), 1.5f, -0.8f, glm::vec3(-5.0f, 2.5f, 0.0f));
+            Utility::draw_text(program, m_font_A, std::string("New Puppy Army Recruites:"), 1.5f, -0.8f, glm::vec3(-8.0f, 2.5f, 0.0f));
             if (!end_scene_ping[1]) {
-                Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
                 end_scene_ping[1] = true;
             }
         }
         if (end_scene_timer >= 3.0) {
             m_game_state.item->render(program);
             if (!end_scene_ping[2]) {
-                Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
                 end_scene_ping[2] = true;
             }
         }
@@ -273,7 +270,6 @@ void LevelA::render(ShaderProgram *program)
             std::string total_items = ss.str();
             Utility::draw_text(program, m_font_A, total_items, 1.5f, -0.8f, glm::vec3(1.5f, 0.0f, 0.0f));
             if (!end_scene_ping[3]) {
-                Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
                 end_scene_ping[3] = true;
             }
         }
@@ -284,7 +280,7 @@ void LevelA::render(ShaderProgram *program)
             }
             if (start_blink_A) {
                 Utility::draw_text(program, m_font_A, std::string("Press [Enter] to ..."), 1.2f, -0.6f, glm::vec3(-7.5f, -2.5f, 0.0f));
-                Utility::draw_text(program, m_font_A, std::string("Continue Manual Labor"), 1.2f, -0.6f, glm::vec3(-5.0f, -3.5f, 0.0f));
+                Utility::draw_text(program, m_font_A, std::string("Gather Food"), 1.2f, -0.6f, glm::vec3(0.5f, -3.5f, 0.0f));
             }
         }
         return;
@@ -312,7 +308,7 @@ void LevelA::render(ShaderProgram *program)
     if (m_game_state.player->get_position().y > -8)   { timer_y = -8;   }
     if (m_game_state.player->get_position().y < -11)  { timer_y = -11;  }
     // task
-    Utility::draw_text(program, m_font_A, std::string("Task 1: Collect the puppies"), 0.8f, -0.4f, glm::vec3(timer_x - 9.5f, timer_y + 7.0f, 0.0f)); // align with timer
+    Utility::draw_text(program, m_font_A, std::string("Task 1: Steal the puppies"), 0.8f, -0.4f, glm::vec3(timer_x - 9.5f, timer_y + 7.0f, 0.0f)); // align with timer
     Utility::draw_text(program, m_font_A, std::string("Time Left: ") + time_left, 0.8f, -0.4f, glm::vec3(timer_x + 4.5f, timer_y + 7.0f, 0.0f));
     
    

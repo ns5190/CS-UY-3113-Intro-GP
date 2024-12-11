@@ -22,7 +22,6 @@ EndScene::~EndScene()
     Mix_FreeMusic(m_game_state.bgm2);
     Mix_FreeChunk(m_game_state.deposit_sfx);
     Mix_FreeChunk(m_game_state.select_sfx);
-    Mix_FreeChunk(m_game_state.ping_sfx);
     Mix_FreeChunk(m_game_state.complete_sfx);
     Mix_FreeChunk(m_game_state.times_up_sfx);
 
@@ -64,12 +63,11 @@ void EndScene::initialise()
     
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
     
-    m_game_state.bgm = Mix_LoadMUS("win_scene.mp3");
+    m_game_state.bgm = Mix_LoadMUS("goth.mp3");
     Mix_PlayMusic(m_game_state.bgm, -1);
     Mix_VolumeMusic(20.0f);
     
     m_game_state.select_sfx = Mix_LoadWAV("select.wav");
-    m_game_state.ping_sfx = Mix_LoadWAV("ping.wav");
     m_game_state.complete_sfx = Mix_LoadWAV("questcomplete.wav");
 }
 
@@ -85,56 +83,28 @@ void EndScene::update(float delta_time)
 void EndScene::render(ShaderProgram *program)
 {
     m_game_state.background->render(program);
-    
     if (end_scene_timer >= 1.0f) {
-        
-        m_game_state.item[0].render(program);
-        std::stringstream ss1;
-        ss1 << std::fixed << std::setprecision(0) << PUPPY_COUNT;
-        std::string puppy_count = ss1.str();
-        Utility::draw_text(program, m_font_end, puppy_count, 1.0f, -0.5f, glm::vec3(1.0f, 2.0f, 0.0f));
-        
+        // Calculate the score based on game variables
+        int score = PUPPY_COUNT * 100 + EGG_COUNT * 50 + POOP_COUNT * 150;
+
+        // Render points breakdown
+        Utility::draw_text(program, m_font_end, "Puppy: 100 points each", 1.0f, -0.5f, glm::vec3(-3.0f, 4.0f, 0.0f));
+        Utility::draw_text(program, m_font_end, "Egg: 50 points each", 1.0f, -0.5f, glm::vec3(-3.0f, 3.0f, 0.0f));
+        Utility::draw_text(program, m_font_end, "Poop: 150 points each", 1.0f, -0.5f, glm::vec3(-3.0f, 2.0f, 0.0f));
+
+        // Render the score
+        std::stringstream ss;
+        ss << "Score: " << score;
+        Utility::draw_text(program, m_font_end, ss.str(), 1.0f, -0.5f, glm::vec3(-3.0f, 1.0f, 0.0f));
+
+        // Display win/lose message
+        std::string message = (score >= 1000) ? "You are Still Employed..." : "You are Fired!";
+        Utility::draw_text(program, m_font_end, message, 1.0f, -0.5f, glm::vec3(-3.0f, 0.0f, 0.0f));
+
         if (!end_scene_ping[0]) {
-            Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
+            Mix_PlayChannel(-1, m_game_state.complete_sfx, 0);
             end_scene_ping[0] = true;
         }
-    }
-    if (end_scene_timer >= 2.0f) {
-        m_game_state.item[1].render(program);
-        std::stringstream ss2;
-        ss2 << std::fixed << std::setprecision(0) << EGG_COUNT;
-        std::string egg_count = ss2.str();
-        Utility::draw_text(program, m_font_end, egg_count, 1.0f, -0.5f, glm::vec3(1.0f, 0.0f, 0.0f));
-        
-        if (!end_scene_ping[1]) {
-            Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
-            end_scene_ping[1] = true;
-        }
-    }
-    if (end_scene_timer >= 3.0f) {
-        m_game_state.item[2].render(program);
-        std::stringstream ss3;
-        ss3 << std::fixed << std::setprecision(0) << POOP_COUNT;
-        std::string poop_count = ss3.str();
-        Utility::draw_text(program, m_font_end, poop_count, 1.0f, -0.5f, glm::vec3(1.0f, -2.0f, 0.0f));
-        
-        if (!end_scene_ping[2]) {
-            Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
-            end_scene_ping[2] = true;
-        }
-    }
-//    if (end_scene_timer >= 4.0f) {
-//        m_game_state.item[3].render(program);
-//        std::stringstream ss4;
-//        int gold = PUPPY_COUNT * 125 + EGG_COUNT * 50 + POOP_COUNT * 625;
-//        ss4 << std::fixed << std::setprecision(0) << gold << " doubloons";
-//        std::string total_gold = ss4.str();
-//        Utility::draw_text(program, m_font_end, total_gold, 1.0f, -0.5f, glm::vec3(1.0f, -4.0f, 0.0f));
-//        
-////        if (!end_scene_ping[3]) {
-////            Mix_PlayChannel(-1, m_game_state.complete_sfx, 0);
-////            end_scene_ping[3] = true;
-////        }
-//    }
+}
     
 }

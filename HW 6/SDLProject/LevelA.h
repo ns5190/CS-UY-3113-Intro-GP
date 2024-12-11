@@ -2,7 +2,7 @@
 
 class LevelA : public Scene {
 public:
-    int ANIMAL_COUNT = 2;
+    int ANIMAL_COUNT = 3;
     
     ~LevelA();
     

@@ -20,12 +20,12 @@ unsigned int LEVEL_B_BACKGROUND_1_DATA[] =
     175, 175, 150, 175, 422, 175, 175, 175, 175, 420, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 423, 175, 175, 175, 175, 175, 175,
     175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 421, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
     175, 175, 175, 175, 175, 175, 175, 152, 175, 175, 175, 175, 175, 175, 175, 175, 175, 152, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
-    175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 200, 201, 201, 201, 203, 175, 175, 175, 175, 325, 326, 326, 326, 327, 175, 175, 423, 175,
-    175, 175, 175, 175, 401, 175, 175, 175, 175, 151, 175, 175, 225, 226, 206, 176, 177, 203, 175, 175, 175, 350, 351, 351, 351, 352, 175, 175, 175, 175,
-    175, 175, 175, 175, 175, 175, 175, 175, 151, 175, 200, 201, 202, 176, 226, 207, 176, 228, 175, 175, 175, 375, 376, 376, 376, 377, 175, 175, 175, 175,
-    175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 225, 226, 231, 227, 206, 226, 226, 228, 175, 175, 175, 175, 175, 175, 175, 175, 175, 401, 175, 175,
-    175, 175, 175, 175, 175, 175, 175, 401, 175, 175, 250, 251, 251, 251, 251, 251, 251, 253, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
-    175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 423, 175, 175, 175, 175, 422, 175, 175, 175, 175, 175, 175, 151, 175, 175,
+    175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 325, 326, 326, 326, 327, 175, 175, 423, 175,
+    175, 175, 175, 175, 401, 175, 175, 175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 350, 351, 351, 351, 352, 175, 175, 175, 175,
+    175, 175, 175, 175, 175, 175, 175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 375, 376, 376, 376, 377, 175, 175, 175, 175,
+    175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 401, 175, 175,
+    175, 175, 175, 175, 175, 175, 175, 401, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
+    175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 422, 175, 175, 175, 175, 175, 175, 151, 175, 175,
     175, 175, 420, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 151, 175, 175, 175, 175, 175, 175, 152, 175, 175, 175,
     175, 423, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 422, 175, 175, 175, 175, 151, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
     175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 401, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175,
@@ -97,7 +97,6 @@ LevelB::~LevelB()
     Mix_FreeMusic(m_game_state.bgm2);
     Mix_FreeChunk(m_game_state.deposit_sfx);
     Mix_FreeChunk(m_game_state.select_sfx);
-    Mix_FreeChunk(m_game_state.ping_sfx);
     Mix_FreeChunk(m_game_state.complete_sfx);
     Mix_FreeChunk(m_game_state.times_up_sfx);
 
@@ -141,12 +140,10 @@ void LevelB::initialise()
     m_game_state.player->m_animation_rows = 4;
     m_game_state.player->set_height(1.0f);
     m_game_state.player->set_width(1.0f);
-    m_game_state.player->set_size(glm::vec3(1.0f, 2.0f, 0.0f));
+    m_game_state.player->set_size(glm::vec3(1.5f, 2.5f, 0.0f));
     
     glm::vec3 m_animal_positions[] = { glm::vec3(  4.0f,  -7.0f, 0.0f),
                                        glm::vec3( 12.0f, -12.0f, 0.0f),
-                                       glm::vec3( 19.0f,  -3.0f, 0.0f),
-                                       glm::vec3(  8.0f, -16.0f, 0.0f),
                                        glm::vec3( 23.0f,  -9.0f, 0.0f)};
 
     m_game_state.animals = new Entity[ANIMAL_COUNT];
@@ -173,7 +170,7 @@ void LevelB::initialise()
         m_game_state.animals[i].m_animation_rows = 7;
         m_game_state.animals[i].set_height(1.0f);
         m_game_state.animals[i].set_width(1.0f);
-        m_game_state.animals[i].set_size(glm::vec3(1.0f, 1.0f, 0.0f));
+        m_game_state.animals[i].set_size(glm::vec3(0.5f, 0.5f, 0.0f));
     }
     
     m_game_state.item = new Entity[EGG_COUNT];
@@ -189,13 +186,12 @@ void LevelB::initialise()
     
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
     
-    m_game_state.bgm = Mix_LoadMUS("summer.mp3");
+    m_game_state.bgm = Mix_LoadMUS("goth.mp3");
     Mix_PlayMusic(m_game_state.bgm, -1);
     Mix_VolumeMusic(20.0f);
     
     m_game_state.deposit_sfx = Mix_LoadWAV("deposit.wav");
     m_game_state.select_sfx = Mix_LoadWAV("select.wav");
-    m_game_state.ping_sfx = Mix_LoadWAV("ping.wav");
     m_game_state.complete_sfx = Mix_LoadWAV("questcomplete.wav");
     m_game_state.times_up_sfx = Mix_LoadWAV("achievement.wav");
 }
@@ -273,16 +269,14 @@ void LevelB::render(ShaderProgram *program)
         }
         if (end_scene_timer >= 2.0) {
             m_game_state.background->render(program);
-            Utility::draw_text(program, m_font_B, std::string("Items Collected:"), 1.5f, -0.8f, glm::vec3(-5.0f, 2.5f, 0.0f));
+            Utility::draw_text(program, m_font_B, std::string("Eggs Stolen:"), 1.5f, -0.8f, glm::vec3(-3.0f, 2.5f, 0.0f));
             if (!end_scene_ping[1]) {
-                Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
                 end_scene_ping[1] = true;
             }
         }
         if (end_scene_timer >= 3.0) {
             m_game_state.item->render(program);
             if (!end_scene_ping[2]) {
-                Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
                 end_scene_ping[2] = true;
             }
         }
@@ -292,7 +286,6 @@ void LevelB::render(ShaderProgram *program)
             std::string total_items = ss.str();
             Utility::draw_text(program, m_font_B, total_items, 1.5f, -0.8f, glm::vec3(1.5f, 0.0f, 0.0f));
             if (!end_scene_ping[3]) {
-                Mix_PlayChannel(-1, m_game_state.ping_sfx, 0);
                 end_scene_ping[3] = true;
             }
         }

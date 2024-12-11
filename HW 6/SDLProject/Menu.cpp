@@ -10,6 +10,7 @@ bool start_blink = true;
 float blink_timer = 0;
 const float blink_switch = 0.5;
 
+
 GLuint m_font_texture_id;
 
 Menu::~Menu()
@@ -25,7 +26,6 @@ Menu::~Menu()
     Mix_FreeMusic(m_game_state.bgm2);
     Mix_FreeChunk(m_game_state.deposit_sfx);
     Mix_FreeChunk(m_game_state.select_sfx);
-    Mix_FreeChunk(m_game_state.ping_sfx);
     Mix_FreeChunk(m_game_state.complete_sfx);
     Mix_FreeChunk(m_game_state.times_up_sfx);
 
@@ -48,7 +48,7 @@ void Menu::initialise()
     
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
     
-    m_game_state.bgm = Mix_LoadMUS("menu_background.mp3");
+    m_game_state.bgm = Mix_LoadMUS("goth.mp3");
     Mix_PlayMusic(m_game_state.bgm, -1);
     Mix_VolumeMusic(20.0f);
     
@@ -74,8 +74,8 @@ void Menu::render(ShaderProgram *program)
     Utility::draw_text(program, m_font_texture_id, std::string("your new life as a farmhand ... "), 0.8f, -0.4f, glm::vec3(-5.6f, -2.0f, 0.0f));
     
     if (start_blink) {
-        Utility::draw_text(program, m_font_texture_id, std::string("Press [Enter] to Start Manual Labor"),
-                           0.8f, -0.4f, glm::vec3(-7.0f, -5.0f, 0.0f));
+        Utility::draw_text(program, m_font_texture_id, std::string("Press [Enter] to Start Building a Puppy Army"),
+                           0.8f, -0.4f, glm::vec3(-8.5f, -5.0f, 0.0f));
     }
 
 }
