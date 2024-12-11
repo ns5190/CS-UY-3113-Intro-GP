@@ -54,6 +54,10 @@ const int VIEWPORT_X = 0,
 const char V_SHADER_PATH[] = "shaders/vertex_textured.glsl",
            F_SHADER_PATH[] = "shaders/fragment_textured.glsl";
 
+constexpr char BGM_FILEPATH[] = "goth.mp3";
+constexpr int    LOOP_FOREVER = -1;
+Mix_Music *g_music;
+
 
 const float MILLISECONDS_IN_SECOND = 1000.0;
 Effects *g_effects = nullptr;
@@ -115,6 +119,10 @@ void initialise()
     
     glClearColor(BG_RED, BG_BLUE, BG_GREEN, BG_OPACITY);
     
+    g_music = Mix_LoadMUS(BGM_FILEPATH);
+    Mix_PlayMusic(g_music, LOOP_FOREVER);
+    Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
+    
     g_menu = new Menu();
     
     g_level_a = new LevelA();
@@ -150,6 +158,10 @@ void process_input()
 
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym) {
+                    case SDLK_m:
+                        // Mute volume
+                        Mix_HaltMusic();
+                        break;
                     case SDLK_SPACE:
                         // Collection
                         if (g_current_scene == g_level_a) {
@@ -159,7 +171,6 @@ void process_input()
                                 g_current_scene->m_game_state.item->activate();
                                 g_effects->start(SHAKING);
                                 
-                        
                             }
                             else if (g_current_scene->m_game_state.player->m_is_holding &&
                                      g_current_scene->m_game_state.player->get_position().x > 10   && g_current_scene->m_game_state.player->get_position().x < 16 &&
@@ -170,7 +181,7 @@ void process_input()
                                 g_current_scene->items_collected++;
                                 g_effects->start(NONE);
                                 
-                                Mix_PlayChannel(-1, g_current_scene->m_game_state.deposit_sfx, 0);
+                                Mix_PlayChannel(-1, g_current_scene->get_state().deposit_sfx, 0);
                             }
                         } else if (g_current_scene == g_level_b) {
                             if (g_current_scene->m_game_state.player->m_collided_animal && !g_current_scene->m_game_state.player->m_is_holding)
@@ -189,7 +200,7 @@ void process_input()
                                 g_current_scene->items_collected++;
                                 g_effects->start(NONE);
                             
-                                Mix_PlayChannel(-1, g_current_scene->m_game_state.deposit_sfx, 0);
+                                Mix_PlayChannel(-1, g_current_scene->get_state().deposit_sfx, 0);
                             }
                         } else if (g_current_scene == g_level_c) {
                             if (g_current_scene->m_game_state.player->m_collided_animal && !g_current_scene->m_game_state.player->m_is_holding)
@@ -207,23 +218,22 @@ void process_input()
                                 g_current_scene->items_collected++;
                                 g_effects->start(NONE);
  
-                                Mix_PlayChannel(-1, g_current_scene->m_game_state.deposit_sfx, 0);
+                                Mix_PlayChannel(-1, g_current_scene->get_state().deposit_sfx, 0);
                             }
                         }
                         break;
                             
                     case SDLK_RETURN:
                         if (g_current_scene == g_menu) {
-                            Mix_PlayChannel(-1, g_current_scene->m_game_state.select_sfx, 0);
+                            Mix_PlayChannel(-1, g_current_scene->get_state().select_sfx, 0);
                             switch_to_scene(g_level_a);
                         } else {
                             if (g_current_scene->end_scene) {
-                                Mix_PlayChannel(-1, g_current_scene->m_game_state.select_sfx, 0);
+                                Mix_PlayChannel(-1, g_current_scene->get_state().select_sfx, 0);
                                 switch_to_scene(g_levels[g_current_scene->m_game_state.next_scene_id]);
                             }
                         }
                         break;
-
                     default:
                         break;
                     }

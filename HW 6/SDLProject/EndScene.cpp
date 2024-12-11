@@ -105,6 +105,6 @@ void EndScene::render(ShaderProgram *program)
             Mix_PlayChannel(-1, m_game_state.complete_sfx, 0);
             end_scene_ping[0] = true;
         }
-}
+    }
     
 }
